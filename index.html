@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trabalho de Casa</title>
+    <title>My First Website</title>
     <style>
       body {
-        font-family: impact , serif;
+        font-family:Verdana, sans-serif;
         margin: 0;
         padding: 0;
         background: #fbf4f4;
@@ -19,18 +19,18 @@
         padding: 24px;
         background: white;
         border-radius: 12px;
-        box-shadow: 0 20px 18px rgba(3, 2, 2, 0.3);
+        box-shadow: 0 15px 14px rgba(3, 2, 2, 0.2);
       }
 
       h1 {
         color: #2b6cb0;
         margin-bottom: 10px;
-        text-shadow: 1px 10px 8px rgba(0, 0, 0, 0.3);
+        text-shadow: 1px 4px 3px rgba(0, 0, 0, 0.15);
       }
 
       p {
-        line-height: 1.8;
-        font-size: 26px;
+        line-height: 1.4;
+        font-size: 28px;
       }
 
       .box {
@@ -40,18 +40,41 @@
         margin-top: 20px;
       }
 
+      .intro {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+
+      }
+
       ul {
-        padding-left: 20px;
+        padding-left: 32px;
         font-size: 36px;
         color: #6f97c2;
       }
+
+      img{
+        display: block;
+        background: #0000003d;
+        padding: 5px;
+        border-radius: 10px;
+        margin: 10px;
+        width: 120px;
+        height: 120px;
+      }
+
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>My Homework Website</h1>
+      
+      <div class="intro">
+        <h1>My Homework Website</h1> 
+       <img src="imagens/valorant-radiant-rank-icon.webp" alt="Radiant Rank Image" />
+      </div>
       <p>This is a simple website I made for school homework.</p>
-
       <div class="box">
         <h2>What I learned</h2>
         <ul>
@@ -63,7 +86,8 @@
 
       <div class="box">
         <h2>About this project</h2>
-        <p>This page is clean, easy to read, and simple to change for your homework.</p>
+        <p>This page is dirty, hard to read, and soo complex to change (i'm not a IA).</p>
+        <p>So, i just make it in english because i need to train my skills in that language.</p>
       </div>
     </div>
   </body>
