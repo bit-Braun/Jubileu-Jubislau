@@ -1,94 +1,466 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My First Website</title>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial de Valorant - Melhore seu Jogo</title>
     <style>
-      body {
-        font-family:Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #fbf4f4;
-        color: #222;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-      .container {
-        max-width: 800px;
-        margin: 40px auto;
-        padding: 24px;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 15px 14px rgba(3, 2, 2, 0.2);
-      }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f0c1f 0%, #1a0e2e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
 
-      h1 {
-        color: #2b6cb0;
-        margin-bottom: 10px;
-        text-shadow: 1px 4px 3px rgba(0, 0, 0, 0.15);
-      }
+        header {
+            background: rgba(255, 68, 0, 0.9);
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 3px solid #ff4400;
+        }
 
-      p {
-        line-height: 1.4;
-        font-size: 28px;
-      }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
 
-      .box {
-        background: #95b9df5b;
-        padding: 15px;
-        border-radius: 8px;
-        margin-top: 20px;
-      }
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
 
-      .intro {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        flex-wrap: wrap;
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
 
-      }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
 
-      ul {
-        padding-left: 32px;
-        font-size: 36px;
-        color: #6f97c2;
-      }
+        button {
+            padding: 12px 25px;
+            background: #ff4400;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
 
-      img{
-        display: block;
-        background: #0000003d;
-        padding: 5px;
-        border-radius: 10px;
-        margin: 10px;
-        width: 120px;
-        height: 120px;
-      }
+        button:hover {
+            background: #ff6b35;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 68, 0, 0.4);
+        }
 
+        button.active {
+            background: #ff6b35;
+            box-shadow: 0 0 15px rgba(255, 68, 0, 0.8);
+        }
+
+        .content {
+            display: none;
+            background: rgba(26, 14, 46, 0.9);
+            border: 2px solid #ff4400;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+            animation: slideIn 0.5s ease;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content h2 {
+            color: #ff4400;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .tip {
+            background: rgba(255, 68, 0, 0.1);
+            border-left: 4px solid #ff4400;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .tip strong {
+            color: #ff6b35;
+        }
+
+        .interactive {
+            background: rgba(255, 68, 0, 0.05);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #ff4400;
+        }
+
+        .stat-box {
+            display: inline-block;
+            background: #ff4400;
+            color: white;
+            padding: 15px 25px;
+            margin: 10px 10px 10px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255, 68, 0, 0.15);
+            border-radius: 5px;
+            font-size: 1.1em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            margin-top: 50px;
+            border-top: 2px solid #ff4400;
+        }
+
+        .agent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .agent-card {
+            background: rgba(255, 68, 0, 0.1);
+            border: 2px solid #ff4400;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .agent-card:hover {
+            background: rgba(255, 68, 0, 0.2);
+            transform: scale(1.05);
+        }
+
+        .agent-card h3 {
+            color: #ff4400;
+            margin-bottom: 10px;
+        }
     </style>
-  </head>
-  <body>
-    <div class="container">
-      
-      <div class="intro">
-        <h1>My Homework Website</h1> 
-       <img src="imagens/valorant-radiant-rank-icon.webp" alt="Radiant Rank Image" />
-      </div>
-      <p>This is a simple website I made for school homework.</p>
-      <div class="box">
-        <h2>What I learned</h2>
-        <ul>
-          <li>How to make a webpage</li>
-          <li>How to use basic HTML</li>
-          <li>How to style a page with CSS</li>
-        </ul>
-      </div>
+</head>
+<body>
+    <header>
+        <h1>🎮 Guia de Gameplay do Valorant</h1>
+        <p>Domine as habilidades para vencer suas partidas</p>
+    </header>
 
-      <div class="box">
-        <h2>About this project</h2>
-        <p>This page is dirty, hard to read, and soo complex to change (i'm not a IA).</p>
-        <p>So, i just make it in english because i need to train my skills in that language.</p>
-      </div>
+    <div class="container">
+        <nav>
+            <button class="nav-btn active" data-section="aim">Mira e Crosshair</button>
+            <button class="nav-btn" data-section="economy">Gestão da Economia</button>
+            <button class="nav-btn" data-section="positioning">Posicionamento</button>
+            <button class="nav-btn" data-section="agents">Seleção de Agentes</button>
+            <button class="nav-btn" data-section="practice">Dicas de Treino</button>
+        </nav>
+
+        <!-- Aim & Crosshair Section -->
+        <div id="aim" class="content active">
+            <h2>🎯 Configurações de Mira e Crosshair</h2>
+            
+            <div class="tip">
+                <strong>Dica de Pro:</strong> Manter a mira consistente é mais importante que a pontaria bruta. Pré-mire pontos comuns!
+            </div>
+
+            <p>Configurações principais para melhorar sua mira:</p>
+            <ul style="margin-left: 20px; margin: 15px 0;">
+                <li><strong>Sensibilidade:</strong> A maioria dos profissionais usa 0.5-1.0 (400 DPI). Sensibilidade mais baixa = melhor controle</li>
+                <li><strong>Tamanho do Crosshair:</strong> Mantenha pequeno (3-5) para ver as cabeças dos inimigos claramente</li>
+                <li><strong>Mouse Pad:</strong> Use pelo menos 27" de largura para movimentos ideais</li>
+                <li><strong>Código do Crosshair:</strong> 0;p;1;s;1;0;0;0;0;0;0;0;0;0;0;0</li>
+            </ul>
+
+            <div class="interactive">
+                <h3>Calculadora de Sensibilidade</h3>
+                <p>Calcule seu eDPI (DPI Efetivo):</p>
+                <label>DPI do Mouse: <input type="range" id="dpiSlider" min="400" max="3200" value="800"></label>
+                <p>DPI Selecionado: <span id="dpiValue">800</span></p>
+                <label>Sensibilidade no Valorant: <input type="range" id="sensSlider" min="0.1" max="2" step="0.1" value="0.8"></label>
+                <p>Sensibilidade Selecionada: <span id="sensValue">0.8</span></p>
+                <div class="result" id="eDPIResult">Seu eDPI: 640</div>
+            </div>
+        </div>
+
+        <!-- Economy Management Section -->
+        <div id="economy" class="content">
+            <h2>💰 Gestão da Economia</h2>
+            
+            <div class="tip">
+                <strong>Regra de Ouro:</strong> Uma economia comprometida pode fazer você perder rodadas mesmo com melhor mira!
+            </div>
+
+            <p>Domine as fases de compra para ganhar vantagem:</p>
+            <ul style="margin-left: 20px; margin: 15px 0;">
+                <li><strong>Compra Completa:</strong> Arma + armadura quando tiver 8000+ créditos (AK/Vandal + Armadura Leve)</li>
+                <li><strong>Meia Compra:</strong> 4000-5000 créditos - Compre armas baratas como Spectre/Bulldog + Armadura Leve</li>
+                <li><strong>Force Buy:</strong> 3000-4000 créditos - Time compra armas baratas para forçar o inimigo</li>
+                <li><strong>Economizar/Eco:</strong> Abaixo de 3000 - Não compre nada e economize para a próxima rodada</li>
+            </ul>
+
+            <div class="interactive">
+                <h3>Planejador de Economia</h3>
+                <p>Planeje a economia do seu time:</p>
+                <label>Créditos Atuais: <input type="range" id="credits" min="0" max="10000" step="500" value="5000"></label>
+                <p>Créditos: <span id="creditsValue">5000</span></p>
+                <div class="result" id="buyAdvice"></div>
+            </div>
+        </div>
+
+        <!-- Positioning Section -->
+        <div id="positioning" class="content">
+            <h2>📍 Posicionamento e Controle de Mapa</h2>
+            
+            <div class="tip">
+                <strong>Conceito-chave:</strong> Bom posicionamento vence boa mira! Sempre pense em:
+            </div>
+
+            <ul style="margin-left: 20px; margin: 15px 0;">
+                <li><strong>Posicionamento da Mira:</strong> Mantenha a mira na altura da cabeça em ângulos comuns</li>
+                <li><strong>Ângulos:</strong> Segure ângulos fechados na defesa, ângulos abertos no ataque</li>
+                <li><strong>Vantagem do Peeker:</strong> Quem está espiando tem vantagem - use utilitários primeiro</li>
+                <li><strong>Off-angles:</strong> Segure posições inesperadas para surpreender inimigos</li>
+                <li><strong>Uso de Utilitários:</strong> Use habilidades para limpar/segurar sites efetivamente</li>
+            </ul>
+
+            <div class="interactive">
+                <h3>Avaliação de Risco da Posição</h3>
+                <p>Quão exposta é sua posição?</p>
+                <label>Número de ângulos inimigos: <input type="range" id="angles" min="1" max="8" value="3"></label>
+                <p>Ângulos: <span id="anglesValue">3</span></p>
+                <div class="result" id="riskAssessment"></div>
+            </div>
+        </div>
+
+        <!-- Agent Selection Section -->
+        <div id="agents" class="content">
+            <h2>👤 Dicas de Seleção de Agentes</h2>
+            <div class="tip">
+                <strong>Composição recomendada:</strong> 2 duelistas, 1 iniciador, 1 controlador, 1 sentinela.
+            </div>
+            <p>Escolha agentes que complementem seu estilo de jogo:</p>
+            
+            <div class="agent-grid">
+                <div class="agent-card" onclick="showAgentInfo('duelist')">
+                    <h3>Duelista</h3>
+                    <p>Rápidos e focados em entrada. Ideais para jogadas agressivas e entrada em sites.</p>
+                </div>
+                <div class="agent-card" onclick="showAgentInfo('initiator')">
+                    <h3>Iniciador</h3>
+                    <p>Coletam informações. Fornecem intel e utilitários para o time.</p>
+                </div>
+                <div class="agent-card" onclick="showAgentInfo('controller')">
+                    <h3>Controlador</h3>
+                    <p>Controle de mapa e negação de visão. Essencial para tomar sites.</p>
+                </div>
+                <div class="agent-card" onclick="showAgentInfo('sentinel')">
+                    <h3>Sentinela</h3>
+                    <p>Utilitários defensivos. Ótimos para segurar pontos e retomar sites.</p>
+                </div>
+            </div>
+
+            <div class="result" id="agentInfo" style="display: none;"></div>
+        </div>
+
+        <!-- Practice Tips Section -->
+        <div id="practice" class="content">
+            <h2>⚡ Rotina de Treino para Melhorar o Jogo</h2>
+            
+            <div class="tip">
+                <strong>A prática leva à perfeição!</strong> Dedique tempo diariamente para melhorar.
+            </div>
+
+            <p><strong>Rotina Diária de 30 Minutos:</strong></p>
+            <ol style="margin-left: 20px; margin: 15px 0;">
+                <li><strong>5 mins:</strong> Treinador de mira (aquecimento de posicionamento de mira)</li>
+                <li><strong>10 mins:</strong> Deathmatch (familiarize-se com o spray)</li>
+                <li><strong>10 mins:</strong> Partida personalizada (pratique posicionamento e uso de utilitários)</li>
+                <li><strong>5 mins:</strong> Assista VODs de profissionais (aprenda novas táticas)</li>
+            </ol>
+
+            <div class="interactive">
+                <h3>Checklist de Mentalidade de Jogador Profissional</h3>
+                <label><input type="checkbox"> Assista replays e analise erros</label><br>
+                <label><input type="checkbox"> Jogue com propósito (não apenas por diversão)</label><br>
+                <label><input type="checkbox"> Mantenha a calma sob pressão</label><br>
+                <label><input type="checkbox"> Comunique-se com os companheiros</label><br>
+                <label><input type="checkbox"> Faça pausas para evitar burnout</label><br>
+                <label><input type="checkbox"> Grave e estude seu gameplay</label><br>
+            </div>
+
+            <p style="margin-top: 20px;"><strong>Lembre-se:</strong> Consistência vence talento. Jogue regularmente e você vai melhorar!</p>
+        </div>
     </div>
-  </body>
+
+    <footer>
+        <p>© 2026 Tutorial de Valorant | Continue treinando e suba de rank! 📈</p>
+    </footer>
+
+    <script>
+        // Navigation
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const contents = document.querySelectorAll('.content');
+
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const section = btn.getAttribute('data-section');
+                
+                navBtns.forEach(b => b.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.getElementById(section).classList.add('active');
+            });
+        });
+
+        // eDPI Calculator
+        const dpiSlider = document.getElementById('dpiSlider');
+        const sensSlider = document.getElementById('sensSlider');
+        const dpiValue = document.getElementById('dpiValue');
+        const sensValue = document.getElementById('sensValue');
+        const eDPIResult = document.getElementById('eDPIResult');
+
+        dpiSlider.addEventListener('input', () => {
+            dpiValue.textContent = dpiSlider.value;
+            updateEDPI();
+        });
+
+        sensSlider.addEventListener('input', () => {
+            sensValue.textContent = sensSlider.value;
+            updateEDPI();
+        });
+
+        function updateEDPI() {
+            const edpi = Math.round(dpiSlider.value * sensSlider.value);
+            eDPIResult.innerHTML = `Seu eDPI: <strong>${edpi}</strong> (${edpi < 600 ? '✅ Excelente' : edpi < 900 ? '✅ Bom' : '⚠️ Alto'})`;
+        }
+
+        // Economy Planner
+        const creditsSlider = document.getElementById('credits');
+        const creditsValue = document.getElementById('creditsValue');
+        const buyAdvice = document.getElementById('buyAdvice');
+
+        creditsSlider.addEventListener('input', () => {
+            creditsValue.textContent = creditsSlider.value;
+            updateBuyAdvice();
+        });
+
+        function updateBuyAdvice() {
+            const credits = parseInt(creditsSlider.value);
+            let advice = '';
+
+            if (credits >= 8000) {
+                advice = '💎 <strong>COMPRA COMPLETA!</strong> Pegue Vandal/AK + Armadura Pesada. Vantagem econômica!';
+            } else if (credits >= 5000) {
+                advice = '💰 <strong>MEIA COMPRA</strong> Pegue Spectre/Bulldog + Armadura Leve. Economia importante.';
+            } else if (credits >= 3000) {
+                advice = '⚔️ <strong>FORCE BUY</strong> Armas baratas como pistolas clássicas. Tente ganhar e acumular créditos.';
+            } else {
+                advice = '📉 <strong>ECONOMIZE</strong> Não compre nada. Economize para a próxima rodada.';
+            }
+
+            buyAdvice.innerHTML = advice;
+        }
+
+        // Position Risk Assessment
+        const anglesSlider = document.getElementById('angles');
+        const anglesValue = document.getElementById('anglesValue');
+        const riskAssessment = document.getElementById('riskAssessment');
+
+        anglesSlider.addEventListener('input', () => {
+            anglesValue.textContent = anglesSlider.value;
+            updateRiskAssessment();
+        });
+
+        function updateRiskAssessment() {
+            const angles = parseInt(anglesSlider.value);
+            let risk = '';
+
+            if (angles <= 2) {
+                risk = '✅ <strong>SEGURO</strong> - Mantenha ângulos fechados. Perfeito para 1v1!';
+            } else if (angles <= 4) {
+                risk = '⚠️ <strong>MODERADO</strong> - Use cobertura com sabedoria. Tenha uma rota de fuga.';
+            } else {
+                risk = '🔴 <strong>PERIGOSO</strong> - Gire ou use utilitários. Muitos ângulos para limpar!';
+            }
+
+            riskAssessment.innerHTML = risk;
+        }
+
+        // Agent Info
+            const agentData = {
+            duelist: {
+                title: 'Duelista',
+                info: '⚡ Rápidos e focados em entrada. Exemplos: Jett, Phoenix, Reyna, Raze<br><strong>Melhor para:</strong> Jogadas agressivas, entrada em sites<br><strong>Estilo:</strong> Seja o primeiro, entre em duelos, abra caminho para o time'
+            },
+            initiator: {
+                title: 'Iniciador',
+                info: '🔍 Coletam informações. Exemplos: Sova, Breach, Skye, Kayo<br><strong>Melhor para:</strong> Recolher intel, preparar jogadas para o time<br><strong>Estilo:</strong> Fornecer informações e utilitários, suportar entradas'
+            },
+            controller: {
+                title: 'Controlador',
+                info: '🌫️ Controle de mapa e negação de visão. Exemplos: Omen, Brimstone, Astra, Harbor<br><strong>Melhor para:</strong> Tomadas de site, smokes<br><strong>Estilo:</strong> Controle o mapa com utilitários e habilite jogadas do time'
+            },
+            sentinel: {
+                title: 'Sentinela',
+                info: '🛡️ Utilitários defensivos. Exemplos: Cypher, Sage, Chamber, Killjoy<br><strong>Melhor para:</strong> Segurar pontos, retomar sites<br><strong>Estilo:</strong> Trancar áreas e suportar rotações'
+            }
+        };
+
+        function showAgentInfo(agent) {
+            const agentInfo = document.getElementById('agentInfo');
+            agentInfo.innerHTML = `<strong>${agentData[agent].title}:</strong> ${agentData[agent].info}`;
+            agentInfo.style.display = 'block';
+        }
+
+        // Initialize
+        updateEDPI();
+        updateBuyAdvice();
+        updateRiskAssessment();
+    </script>
+</body>
 </html>
